@@ -35,7 +35,6 @@ class AppNavigation {
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
-      /// MainWrapper
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainMenuWrapper(
@@ -105,7 +104,6 @@ class AppNavigation {
           ),
         ],
       ),
-
       GoRoute(
         name: AppRoutes.login,
         parentNavigatorKey: _rootNavigatorKey,
@@ -114,7 +112,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
         name: AppRoutes.register,
         parentNavigatorKey: _rootNavigatorKey,
@@ -123,7 +120,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
         name: AppRoutes.forgot_password,
         parentNavigatorKey: _rootNavigatorKey,
@@ -133,7 +129,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
         name: AppRoutes.reset_password,
         parentNavigatorKey: _rootNavigatorKey,
@@ -143,7 +138,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
         name: AppRoutes.add_request,
         parentNavigatorKey: _rootNavigatorKey,
@@ -153,7 +147,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
         name: AppRoutes.add_ressource,
         parentNavigatorKey: _rootNavigatorKey,
@@ -163,7 +156,6 @@ class AppNavigation {
           key: state.pageKey,
         ),
       ),
-
       GoRoute(
           name: AppRoutes.detail_request,
           parentNavigatorKey: _rootNavigatorKey,
@@ -175,7 +167,6 @@ class AppNavigation {
               key: state.pageKey,
             );
           }),
-
       GoRoute(
         name: AppRoutes.detail_ressource,
         parentNavigatorKey: _rootNavigatorKey,
