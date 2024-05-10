@@ -4,12 +4,9 @@ import 'package:get/get.dart';
 import 'package:request_manager/routes/app_route.dart';
 import 'package:request_manager/utils/themes/base_theme.dart';
 import 'package:request_manager/utils/themes/text_theme.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
