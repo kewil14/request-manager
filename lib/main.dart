@@ -25,7 +25,7 @@ class RequestManagerApp extends StatefulWidget {
 class _RequestManagerAppState extends State<RequestManagerApp> {
   @override
   Widget build(BuildContext context) {
-    final brightness = View.of(context).platformDispatcher.platformBrightness;
+    // final brightness = View.of(context).platformDispatcher.platformBrightness;
     TextTheme textTheme = createTextTheme(context, "Prompt", "Roboto");
     MaterialTheme theme = MaterialTheme(textTheme);
 
