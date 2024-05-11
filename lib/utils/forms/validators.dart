@@ -22,6 +22,13 @@ class Validators {
     return null;
   }
 
+  static String? validateEmptyIdentifier(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Entrez votre matricule';
+    }
+    return null;
+  }
+
   static String? validateDescribe(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your description';

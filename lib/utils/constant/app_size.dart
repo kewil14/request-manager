@@ -1,47 +1,48 @@
 import 'package:flutter/material.dart';
 
 class AppSizes {
-  //dimensions de l'écran
-  static width(BuildContext context) => MediaQuery.of(context).size.width;
-  static height(BuildContext context) => MediaQuery.of(context).size.height;
+  // Dimensions de l'écran
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
 
-  static paddingToUp(BuildContext context) => AppSizes.height(context) - 150;
-  static padding20(BuildContext context) => AppSizes.width(context) * 0.04;
-  static onBoardTitleSize(BuildContext context) =>
-      AppSizes.height(context) * 0.03;
-  static onboardIconSize(BuildContext context) =>
-      AppSizes.height(context) * 0.025;
-  static font16(BuildContext context) => AppSizes.height(context) * 0.015;
-  static font18(BuildContext context) => AppSizes.height(context) * 0.017;
-  static font20(BuildContext context) => AppSizes.height(context) * 0.020;
-  static font22(BuildContext context) => AppSizes.height(context) * 0.022;
-  static font25(BuildContext context) => AppSizes.height(context) * 0.025;
+  // Marges et espacements
+  static double smallMargin(BuildContext context) => width(context) * 0.02;
+  static double mediumMargin(BuildContext context) => width(context) * 0.04;
+  static double largeMargin(BuildContext context) => width(context) * 0.06;
 
-  static height15(BuildContext context) => AppSizes.height(context) * 0.015;
-  static width10(BuildContext context) => AppSizes.width(context) * 0.06;
-  // Marges
-  static const double marginSmall = 8.0;
-  static const double marginMedium = 16.0;
-  static const double marginLarge = 24.0;
+  static double smallPadding(BuildContext context) => width(context) * 0.02;
+  static double mediumPadding(BuildContext context) => width(context) * 0.03;
+  static double largePadding(BuildContext context) => width(context) * 0.06;
 
-  // Paddings
-  static const double paddingSmall = 8.0;
-  static const double paddingMedium = 16.0;
-  static const double paddingLarge = 24.0;
+  // Tailles des éléments
+  static double iconSize(BuildContext context) => width(context) * 0.06;
+  static double smallButtonHeight(BuildContext context) =>
+      height(context) * 0.05;
+  static double mediumButtonHeight(BuildContext context) =>
+      height(context) * 0.06;
+  static double largeButtonHeight(BuildContext context) =>
+      height(context) * 0.08;
+
+  static double smallButtonWidth(BuildContext context) => width(context) * 0.2;
+  static double mediumButtonWidth(BuildContext context) => width(context) * 0.4;
+  static double largeButtonWidth(BuildContext context) => width(context) * 0.6;
+
+  static double smallCardHeight(BuildContext context) => height(context) * 0.15;
+  static double mediumCardHeight(BuildContext context) =>
+      height(context) * 0.25;
+  static double largeCardHeight(BuildContext context) => height(context) * 0.35;
 
   // Tailles de texte
-  static const double textSmall = 12.0;
-  static const double textMedium = 16.0;
-  static const double textLarge = 20.0;
-  static const double textExtraLarge = 24.0;
+  static double smallTextSize(BuildContext context) => width(context) * 0.03;
+  static double mediumTextSize(BuildContext context) => width(context) * 0.04;
+  static double largeTextSize(BuildContext context) => width(context) * 0.05;
+  static double extraLargeTextSize(BuildContext context) =>
+      width(context) * 0.07;
 
-  // Hauteur des boutons
-  static const double buttonHeight = 48.0;
-  static const double inputHeight = 50.0;
-  static const double loaderSize = 20.0;
-
-  // Taille des icônes
-  static const double iconSizeSmall = 20.0;
-  static const double iconSizeMedium = 24.0;
-  static const double iconSizeLarge = 30.0;
+  // Rayons de bordure
+  static double smallRadius(BuildContext context) => width(context) * 0.02;
+  static double mediumRadius(BuildContext context) => width(context) * 0.04;
+  static double largeRadius(BuildContext context) => width(context) * 0.06;
 }
