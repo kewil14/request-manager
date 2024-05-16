@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:request_manager/controllers/auth_controller.dart';
 import 'package:request_manager/routes/app_route.dart';
 import 'package:request_manager/utils/themes/base_theme.dart';
 import 'package:request_manager/utils/themes/text_theme.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await initializeDateFormatting('fr_FR', null);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);

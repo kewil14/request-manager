@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: AppSizes.mediumMargin(context)),
               Image.asset(
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: AppSizes.smallCardHeight(context),
                 // alignment: Alignment.topLeft,
               ),
-              SizedBox(height: AppSizes.largeMargin(context)),
+              SizedBox(height: AppSizes.largeMargin(context) * 2),
               Form(
                 key: controller.formLoginEmailKey,
                 child: Padding(
