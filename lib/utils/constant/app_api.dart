@@ -3,7 +3,8 @@ class ApiConstants {
 
   // URL de base de l'API
   // static const String baseUrl = 'https://exempleapi.com/api';
-  static const String baseUrl = 'http://localhost:9000/api';
+  // static const String baseUrl = 'http://localhost:9000/api';
+  static const String baseUrl = 'http://165.227.34.208:9000/api';
 
   // Points de terminaison spécifiques
   static const String loginEndpoint = '/login';
