@@ -2,10 +2,11 @@ class ApiConstants {
   static const String appName = 'Request Manager';
 
   // URL de base de l'API
-  static const String baseUrl = 'https://exempleapi.com/api';
+  // static const String baseUrl = 'https://exempleapi.com/api';
+  static const String baseUrl = 'http://localhost:9000/api';
 
   // Points de terminaison spécifiques
-  static const String loginEndpoint = '/user/login';
+  static const String loginEndpoint = '/login';
   static const String registerEndpoint = '/user/register';
   static const String fetchUserProfile = '/user/profile';
 
