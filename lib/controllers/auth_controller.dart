@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:request_manager/environment/environment.dart';
 import 'package:request_manager/routes/name_route.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   final GlobalKey<FormState> formLoginEmailKey = GlobalKey<FormState>();
@@ -16,35 +17,54 @@ class AuthController extends GetxController {
   RxBool isLoadLogin = false.obs;
 
   Future<void> login(BuildContext context) async {
+
+    isLoadLogin.value = true;
+
     if (formLoginEmailKey.currentState!.validate()) {
-      var response = await http.post(Uri.parse(baseUrl + '/api/users'),
+      var response = await http.post(Uri.parse(baseUrl + AppRoutes.login),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
-            "matricule": identifierController.text,
+            "username": identifierController.text,
             "password": passwordController.text,
           }));
 
-      /*  if (response.statusCode == 200) {
+       if (response.statusCode == 200) {
         // La requête a réussi
         print('Requête POST réussie');
         final responseData = json.decode(response.body);
-        */ /*final username = responseData['username'];
-        final email = responseData['email'];
-        final numberPhone = responseData['numberPhone'];*/ /*
+        final refresh_token = responseData['refresh-token'];
+        final rolesUser = responseData['rolesUser'];
+        final userId = responseData['userId'];
         final datas = responseData['body'];
 
-        */ /* SharedPreferences prefs = await SharedPreferences.getInstance();
-       await prefs.setString('username', username);
-        await prefs.setString('email', email);
-        await prefs.setString('numberPhone', numberPhone);*/ /*
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('refresh_token', refresh_token);
+        await prefs.setString('rolesUser', rolesUser);
+        await prefs.setString('userId', userId);
+        
+        isLoadLogin.value = true;
+        await Future.delayed(const Duration(seconds: 2));
+        context.pushNamed(AppRoutes.home);
+        isLoadLogin.value = false;
+
+
         return datas;
-      } else if (response.statusCode == 401) {
-        const res = 'revfrty';
-      }*/
+      }
+       else if (response.statusCode == 401) {
+         const res = 'revfrty';
+       }
+       else if (response.statusCode == 403) {
+         const res = 'revfrty';
+         print('403');
+       }
+
+       else {
+         print('this is the resp:$response');
+       }
     }
-    isLoadLogin.value = true;
-    await Future.delayed(const Duration(seconds: 2));
-    context.pushNamed(AppRoutes.home);
-    isLoadLogin.value = false;
+    // isLoadLogin.value = true;
+    // await Future.delayed(const Duration(seconds: 2));
+    // context.pushNamed(AppRoutes.home);
+    // isLoadLogin.value = false;
   }
 }
