@@ -27,10 +27,15 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
   ];
   String? selectedIndexCategory = 'Business';
   final controller = Get.put(RequestController());
+  getRequest() async {
+    result = await this.controller.getTypeRequest();
+  }
+
+  dynamic result;
   @override
   void initState() {
     super.initState();
-    this.controller.getTypeRequest();
+    getRequest();
     objetController = TextEditingController();
     messageController = TextEditingController();
     typeRequestId = 0;
@@ -178,10 +183,10 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
                                 selectedIndexCategory = newValue;
                               });
                             },
-                            items: listOfCategory.map((category) {
+                            items: result.map((category) {
                               return DropdownMenuItem(
                                 child: Center(
-                                  child: Text(category,
+                                  child: Text(category['name'],
                                       style: TextStyle(
                                         color: Colors.cyan,
                                       )),
@@ -237,8 +242,15 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {
-                    this.controller.getTypeRequest();
+                  onPressed: () async {
+                    try {
+                      dynamic result = await this.controller.getTypeRequest();
+                      // Utilisez le résultat ici
+                      print(result);
+                    } catch (e) {
+                      // Gérez l'exception ici
+                      print(e);
+                    }
                   },
                 ),
               ),
