@@ -21,7 +21,7 @@ class AuthController extends GetxController {
     isLoadLogin.value = true;
 
     if (formLoginEmailKey.currentState!.validate()) {
-      var response = await http.post(Uri.parse(baseUrl + AppRoutes.login),
+      var response = await http.post(Uri.parse(baseUrl + '/login'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             "username": identifierController.text,
