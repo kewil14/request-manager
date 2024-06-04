@@ -31,7 +31,7 @@ class AppNavigation {
 
   // GoRouter configuration
   static final GoRouter router = GoRouter(
-    initialLocation: "/" + AppRoutes.login,
+    initialLocation: "/" + AppRoutes.home,
     // initialLocation:
     //     "/" + AppRoutes.main_home + "/" + AppRoutes.list_ressources,
     debugLogDiagnostics: true,

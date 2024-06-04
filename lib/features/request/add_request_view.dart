@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:request_manager/controllers/request_controller.dart';
 
 class AddRequestScreen extends StatefulWidget {
   const AddRequestScreen({Key? key});
@@ -13,10 +16,21 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
   late int typeRequestId;
   late int studentId;
   late int ueId;
-
+  List<String> listOfCategory = [
+    'It',
+    'Computer Science',
+    'Business',
+    'Data Science',
+    'Infromation Technologies',
+    'Health',
+    'Physics'
+  ];
+  String? selectedIndexCategory = 'Business';
+  final controller = Get.put(RequestController());
   @override
   void initState() {
     super.initState();
+    this.controller.getTypeRequest();
     objetController = TextEditingController();
     messageController = TextEditingController();
     typeRequestId = 0;
@@ -39,7 +53,7 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        /* child: Column(
           children: [
             TextField(
               controller: objetController,
@@ -112,6 +126,124 @@ class _AddRequestScreenState extends State<AddRequestScreen> {
               child: const Text('Create Request'),
             ),
           ],
+        ),*/
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Objet",
+                  prefixIcon: Icon(Icons.emoji_objects_outlined),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    // borderSide: BorderSide(color: appStore.iconColor!),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    // borderSide: BorderSide(width: 1, color: appStore.iconColor!),
+                  ),
+                ),
+                controller:
+                    TextEditingController(text: "Rectification de note"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: SingleChildScrollView(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: <Widget>[
+                      Text('Type de Requete',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Card(
+                          elevation: 4,
+                          child: DropdownButton(
+                            isExpanded: true,
+                            // dropdownColor: appStore.appBarColor,
+                            value: selectedIndexCategory,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            icon: Icon(
+                              Icons.keyboard_arrow_down,
+                              //color: appStore.iconColor,
+                            ),
+                            underline: SizedBox(
+                              height: 0,
+                            ),
+                            onChanged: (dynamic newValue) {
+                              setState(() {
+                                // toasty(context, newValue);
+                                selectedIndexCategory = newValue;
+                              });
+                            },
+                            items: listOfCategory.map((category) {
+                              return DropdownMenuItem(
+                                child: Center(
+                                  child: Text(category,
+                                      style: TextStyle(
+                                        color: Colors.cyan,
+                                      )),
+                                ),
+                                // .paddingLeft(8),
+                                value: category,
+                              );
+                            }).toList(),
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: TextFormField(
+                  controller: TextEditingController(text: ""),
+
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.mail,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      // borderSide: BorderSide(color: appStore.iconColor!),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      // borderSide: BorderSide(width: 1, color: appStore.iconColor!),
+                    ),
+                    labelText: 'Message',
+                    //labelStyle: primaryTextStyle(),
+                    alignLabelWithHint: true,
+                  ),
+                  maxLines: 3,
+                  // cursorColor: appStore.isDarkModeOn ? white : blackColor,
+                  keyboardType: TextInputType.multiline,
+                  validator: (s) {
+                    if (s!.trim().isEmpty) return 'Address is required';
+                    return null;
+                  },
+                ),
+              ),
+              Container(
+                width: 400,
+                padding: EdgeInsets.all(16),
+                child: FloatingActionButton(
+                  heroTag: '2',
+                  backgroundColor: Colors.cyan,
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    this.controller.getTypeRequest();
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

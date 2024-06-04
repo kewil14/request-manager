@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:request_manager/routes/name_route.dart';
 import 'package:request_manager/utils/constant/app_assets.dart';
 import 'package:request_manager/utils/constant/app_colors.dart';
 import 'package:request_manager/utils/constant/app_size.dart';
@@ -136,7 +138,7 @@ class _ListRequestScreenState extends State<ListRequestScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Ici, vous pouvez ajouter la logique pour gérer la nouvelle requête
-          print('Nouvelle requête ajoutée');
+          context.pushNamed(AppRoutes.add_request);
         },
         tooltip: 'Ajouter une nouvelle requête',
         child: Icon(Icons.add),
